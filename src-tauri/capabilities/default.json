@@ -14,8 +14,8 @@
     "core:window:allow-set-always-on-top",
     "core:window:allow-set-min-size",
     "core:window:allow-set-max-size",
-    "global-shortcut:allow-is-registered",
-    "global-shortcut:allow-register",
-    "global-shortcut:allow-unregister"
+    "core:window:allow-inner-size",
+    "core:window:allow-scale-factor",
+    "global-shortcut:default"
   ]
 }
