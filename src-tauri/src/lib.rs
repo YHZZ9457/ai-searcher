@@ -9,8 +9,9 @@ pub fn run() {
         .plugin(tauri_plugin_global_shortcut::Builder::new().build())
         .setup(|app| {
             // 1. 全局快捷键
-            let shortcut: tauri_plugin_global_shortcut::Shortcut = "Alt+Space".parse().unwrap();
-            app.global_shortcut().on_shortcut(shortcut, move |app_handle, sc, event| {
+            let shortcut_str = "Alt+Space";
+            let shortcut: tauri_plugin_global_shortcut::Shortcut = shortcut_str.parse().unwrap();
+            let result = app.global_shortcut().on_shortcut(shortcut, move |app_handle, sc, event| {
                 if sc == &shortcut && event.state() == tauri_plugin_global_shortcut::ShortcutState::Pressed {
                     let win = app_handle.get_webview_window("main").unwrap();
                     if win.is_visible().unwrap() {
@@ -20,7 +21,11 @@ pub fn run() {
                         win.set_focus().unwrap(); 
                     }
                 }
-            })?;
+            });
+
+            if let Err(e) = result {
+                eprintln!("Failed to register global shortcut {}: {}", shortcut_str, e);
+            }
 
             // 2. 菜单项
             let show_i = MenuItem::with_id(app, "show", "显示窗口", true, None::<&str>)?;

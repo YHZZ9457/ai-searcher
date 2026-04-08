@@ -554,7 +554,7 @@ export default function App() {
 
           {/* 底部版权信息 */}
           <div className="pt-2 text-center">
-            <p className="text-[10px] text-zinc-400 italic font-mono opacity-60">AI Searcher v0.3.2 • Crafted with Love</p>
+            <p className="text-[10px] text-zinc-400 italic font-mono opacity-60">AI Searcher v0.3.3 • Crafted with Love</p>
           </div>
         </div>
       )}
